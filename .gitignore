@@ -1,0 +1,6 @@
+# Word documents (content reference, not part of the website)
+*.docx
+
+# OS files
+.DS_Store
+Thumbs.db

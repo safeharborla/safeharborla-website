@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safe Harbor LA — Violence Prevention & Trauma Recovery</title>
+  <meta name="description" content="Safe Harbor LA is a grant-funded violence prevention and trauma recovery program at Harbor-UCLA Medical Center, providing trauma-informed care for survivors of violent injury.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Karla:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #0b1f3a;
+      --navy-mid:    #122a4d;
+      --blue-accent: #1e4d8c;
+      --gold:        #e8b84b;
+      --gold-pale:   #fdf3d7;
+      --cream:       #f9f8f5;
+      --white:       #ffffff;
+      --gray-light:  #eeede9;
+      --gray-rule:   #e0dfda;
+      --gray-mid:    #9ca3af;
+      --gray-text:   #4b5563;
+      --text-dark:   #0f1f33;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Karla', sans-serif;
+
+      --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--cream);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+
+    /* ─── Header / Navigation ─── */
+    #header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      height: 72px;
+      padding: 0 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out);
+    }
+
+    #header.scrolled {
+      background: rgba(249, 248, 245, 0.96);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.07);
+      backdrop-filter: blur(16px);
+    }
+
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 9px;
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      transition: color 0.45s var(--ease-out);
+    }
+
+    #header.scrolled .logo { color: var(--navy); }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      display: inline-block;
+    }
+
+    .logo-la {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 3px 7px 2px;
+      border-radius: 2px;
+      align-self: center;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    nav a {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255,255,255,0.8);
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0; right: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s var(--ease-out);
+    }
+
+    nav a:hover { color: var(--white); }
+    nav a:hover::after { transform: scaleX(1); }
+
+    #header.scrolled nav a { color: var(--gray-text); }
+    #header.scrolled nav a:hover { color: var(--navy); }
+
+    .nav-cta {
+      padding: 18px 44px 16px;
+      background: var(--gold);
+      color: var(--navy) !important;
+      border-radius: 2px;
+      font-weight: 700;
+      transition: background 0.25s ease, transform 0.2s ease !important;
+    }
+
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: #f5d47a !important; transform: translateY(-1px); }
+
+    /* ─── Hero ─── */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy);
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 120px 52px 80px;
+      overflow: hidden;
+    }
+
+    /* Atmospheric glow */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 75% 55%, rgba(30,77,140,0.5) 0%, transparent 100%),
+        radial-gradient(ellipse 40% 40% at 15% 75%, rgba(232,184,75,0.07) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Subtle noise grain */
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.35;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.08'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1160px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    /* Hero left: headline block */
+    .hero-left {
+      opacity: 0;
+      transform: translateY(28px);
+      animation: fadeUp 1s var(--ease-out) 0.25s forwards;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 36px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .hero-h1 {
+      font-family: var(--font-display);
+      font-size: clamp(58px, 7.5vw, 100px);
+      font-weight: 300;
+      line-height: 1.04;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 36px;
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-rule {
+      width: 52px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 28px;
+      transform-origin: left;
+      opacity: 0;
+      transform: scaleX(0);
+      animation: slideRule 0.75s var(--ease-out) 1s forwards;
+    }
+
+    .hero-body {
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.55);
+      max-width: 420px;
+      margin-bottom: 52px;
+    }
+
+    .hero-scroll-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      transition: color 0.3s ease, border-color 0.3s ease, gap 0.3s ease;
+    }
+
+    .hero-scroll-link:hover {
+      color: var(--white);
+      border-color: var(--gold);
+      gap: 18px;
+    }
+
+    /* Hero right: info card stack */
+    .hero-right {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s var(--ease-out) 0.55s forwards;
+    }
+
+    .hero-cards {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .hero-card {
+      padding: 28px 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.03);
+      transition: background 0.3s ease;
+    }
+
+    .hero-card:last-child { border-bottom: none; }
+    .hero-card:hover { background: rgba(255,255,255,0.06); }
+
+    .hero-card-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 9px;
+    }
+
+    .hero-card-text {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.5;
+    }
+
+    /* ─── Shared Section Atoms ─── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .section-label span {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--navy);
+      opacity: 0.45;
+    }
+
+    .section-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 4.5vw, 60px);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+    }
+
+    .section-h2 em {
+      font-style: italic;
+      color: var(--blue-accent);
+    }
+
+    /* ─── About Section ─── */
+    #about {
+      background: var(--cream);
+      padding: 128px 52px;
+    }
+
+    .about-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-bottom: 100px;
+    }
+
+    .mission-body {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--gray-text);
+    }
+
+    .mission-body p + p { margin-top: 22px; }
+
+    .mission-quote {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--navy);
+      padding-left: 24px;
+      border-left: 3px solid var(--gold);
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--gray-rule);
+      border: 1px solid var(--gray-rule);
+      margin-bottom: 100px;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 44px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s ease;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--ease-out);
+    }
+
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-card:hover { background: var(--cream); }
+
+    .service-num {
+      font-family: var(--font-display);
+      font-size: 52px;
+      font-weight: 300;
+      color: rgba(11,31,58,0.07);
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    .service-desc {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--gray-text);
+    }
+
+    /* Team */
+    .team-h3 {
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 52px;
+    }
+
+    .team-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-bottom: 2px;
+    }
+
+    .team-member {}
+
+    .team-photo-wrap {
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--gray-light);
+      margin-bottom: 18px;
+    }
+
+    .team-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%; /* default fallback */
+      filter: grayscale(15%);
+      transition: filter 0.5s ease, transform 0.6s var(--ease-out);
+    }
+
+    /* Per-photo face alignment — adjust the % to move the crop up (lower %) or down (higher %) */
+    img[src*="VC"]     { object-position: center 35%; }
+    img[src*="Sumala"] { object-position: center 10%; }
+
+    .team-member:hover .team-photo-wrap img {
+      filter: grayscale(0%);
+      transform: scale(1.03);
+    }
+
+    .team-role-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+
+    .team-name {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+
+    .team-credentials {
+      font-size: 13px;
+      color: var(--gray-mid);
+    }
+
+    /* Placeholder portrait for team members without photos */
+    .team-photo-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gray-light);
+    }
+
+    .team-placeholder-icon {
+      width: 52%;
+      height: auto;
+      opacity: 0.28;
+    }
+
+    /* Partners */
+    .partners {
+      margin-top: 100px;
+      padding-top: 64px;
+      border-top: 1px solid var(--gray-rule);
+    }
+
+    .partners-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .partners-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 72px;
+      flex-wrap: wrap;
+    }
+
+    .partner-logo {
+      height: 66px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.45;
+      filter: grayscale(100%);
+      transition: opacity 0.35s ease, filter 0.35s ease;
+    }
+
+    .partner-logo:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+    }
+
+    /* ─── Carousel Section ─── */
+    #gallery {
+      background: var(--navy);
+      padding: 100px 52px;
+    }
+
+    .gallery-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .gallery-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+
+    .gallery-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+    }
+
+    .gallery-h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .carousel-controls {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .carousel-btn {
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: transparent;
+      border-radius: 2px;
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .carousel-btn:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--navy);
+    }
+
+    .carousel-track-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 3px;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      position: relative;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-caption-area {
+      background: rgba(11,31,58,0.92);
+      padding: 14px 24px;
+      text-align: center;
+    }
+
+    .carousel-caption-text {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      font-style: italic;
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 24px;
+    }
+
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .carousel-dot.active {
+      background: var(--gold);
+      transform: scale(1.4);
+    }
+
+    /* ─── Donate Section ─── */
+    #donate {
+      background: var(--navy);
+      padding: 128px 52px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #donate::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 65% 70% at 25% 50%, rgba(30,77,140,0.45) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .donate-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .donate-section-label .section-label span { color: rgba(255,255,255,0.35); }
+
+    .donate-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5vw, 66px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+    }
+
+    .donate-h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .donate-body {
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .donate-panel {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 3px;
+      padding: 48px 44px;
+    }
+
+    .donate-panel-copy {
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+    }
+
+    .donate-btn {
+      display: block;
+      width: 100%;
+      padding: 17px 28px;
+      text-align: center;
+      background: var(--gold);
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.25s ease, transform 0.2s ease;
+    }
+
+    .donate-btn:hover {
+      background: #f5d47a;
+      transform: translateY(-2px);
+    }
+
+    .donate-note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      text-align: center;
+    }
+
+    .donate-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+      margin: 36px 0;
+    }
+
+    .contact-block-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .contact-link {
+      display: block;
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      line-height: 2;
+      transition: color 0.25s ease;
+    }
+
+    .contact-link:hover { color: var(--white); }
+
+    /* ─── Footer ─── */
+    footer {
+      background: #060e1d;
+      padding: 72px 52px 48px;
+    }
+
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2.2fr 1fr 1fr;
+      gap: 64px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 22px;
+    }
+
+    .footer-affil {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      line-height: 1.7;
+    }
+
+    .footer-col-head {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 20px;
+    }
+
+    .footer-nav {
+      list-style: none;
+    }
+
+    .footer-nav li + li { margin-top: 10px; }
+
+    .footer-nav a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+
+    .footer-nav a:hover { color: var(--white); }
+
+    .footer-contact-line {
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .footer-contact-link {
+      display: block;
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      line-height: 1.9;
+      transition: color 0.25s ease;
+    }
+
+    .footer-contact-link:hover { color: var(--white); }
+
+    .footer-bottom {
+      max-width: 1160px;
+      margin: 48px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.18);
+    }
+
+    /* ─── Animations ─── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideRule {
+      to { opacity: 1; transform: scaleX(1); }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.75s var(--ease-out), transform 0.75s var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ─── Hamburger ─── */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 101;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--white);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+
+    #header.scrolled .menu-toggle span { background: var(--navy); }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ─── Mobile nav overlay ─── */
+    .mobile-nav {
+      position: fixed;
+      inset: 72px 0 0 0;
+      background: var(--navy);
+      z-index: 98;
+      padding: 40px 28px;
+      display: flex;
+      flex-direction: column;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(-12px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .mobile-nav.open {
+      pointer-events: auto;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-nav-link {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      letter-spacing: -0.01em;
+      transition: color 0.25s ease;
+    }
+
+    .mobile-nav-link:hover { color: var(--white); }
+
+    .mobile-nav-donate {
+      border-bottom: none;
+      color: var(--gold);
+    }
+
+    .mobile-nav-donate:hover { color: #f5d47a; }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 960px) {
+      #header { padding: 0 28px; }
+
+      #hero { padding: 108px 28px 72px; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 52px;
+      }
+
+      .hero-right { display: none; }
+
+      #about { padding: 88px 28px; }
+
+      .mission-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .team-photo-grid { grid-template-columns: repeat(2, 1fr); }
+
+      #gallery { padding: 72px 28px; }
+
+      #donate { padding: 88px 28px; }
+
+      .donate-inner {
+        grid-template-columns: 1fr;
+        gap: 52px;
+      }
+
+      footer { padding: 56px 28px 36px; }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav { display: none; }
+
+      .menu-toggle { display: flex; }
+
+      .team-photo-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .partners-row { gap: 36px; }
+
+      .carousel-slide img { height: 320px; }
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- ══════ HEADER ══════ -->
+  <header id="header">
+    <a href="#" class="logo">
+      Safe Harbor
+      <span class="logo-la">LA</span>
+    </a>
+    <nav>
+      <a href="#about">About Us</a>
+      <a href="#team">Our Team</a>
+      <a href="https://givebutter.com/safe-harbor-la-nti8rx" target="_blank" rel="noopener noreferrer" class="nav-cta">Donate</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- Mobile nav overlay -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <a href="#about" class="mobile-nav-link">About Us</a>
+    <a href="#team" class="mobile-nav-link">Our Team</a>
+    <a href="https://givebutter.com/safe-harbor-la-nti8rx" target="_blank" rel="noopener noreferrer" class="mobile-nav-link mobile-nav-donate">Donate</a>
+  </div>
+
+  <!-- ══════ HERO ══════ -->
+  <section id="hero">
+    <div class="hero-inner">
+
+      <div class="hero-left">
+        <div class="hero-eyebrow">Hospital-Based Violence Intervention Program</div>
+        <h1 class="hero-h1">
+          Healing<br>
+          Trauma.<br>
+          <em>Uplifting</em><br>
+          Community.
+        </h1>
+        <div class="hero-rule"></div>
+        <p class="hero-body">
+          A trauma-informed program providing case management and counseling for survivors of violent injury in Los Angeles, free of cost.
+        </p>
+        <a href="#about" class="hero-scroll-link">
+          Learn about our work
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M7 2v10M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-cards">
+          <div class="hero-card">
+            <div class="hero-card-label">Our Mission</div>
+            <div class="hero-card-text">To support community members in breaking the cycle of violence, foster growth and leadership through positive mentorship, and promote social change in our institutions.</div>
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-label">Our Approach</div>
+            <div class="hero-card-text">We believe in the power of community-centered, cross-sector, collaborative programming to enhance the health of the community members we serve and the care we deliver — from acute care through lasting recovery.</div>
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-label">Our Home</div>
+            <div class="hero-card-text">Division of Trauma · Harbor-UCLA Medical Center · The Lundquist Institute · Torrance, CA</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════ ABOUT ══════ -->
+  <section id="about">
+    <div class="about-inner">
+
+      <div class="section-label reveal">
+        <span>About Us</span>
+      </div>
+      <h2 class="section-h2 reveal">
+        A safe harbor for<br><em>every storm.</em>
+      </h2>
+
+      <div class="mission-grid">
+        <div class="mission-body reveal">
+          <p>
+            Safe Harbor HVIP is a grant- and community- funded violence prevention and trauma recovery program housed within the Division of Trauma at Harbor-UCLA Medical Center and the Lundquist Institute for Biomedical Innovation.
+          </p>
+          <p>
+            Through collaboration with our community partners, we provide patient-centered, trauma-informed case management and counseling services for victims of violent injury. 
+          </p>
+          <p>
+            Our work is rooted in the belief that healing is possible, and that communities have the power to transform cycles of violence into cycles of strength.
+          </p>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <blockquote class="mission-quote">
+            "Walking alongside survivors from the moment of injury through their longer journey of recovery."
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <div class="service-title">Case Management</div>
+          <p class="service-desc">Personalized, sustained support guiding survivors through recovery, connecting them to resources, services, and a sustainable path forward.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <div class="service-title">Counseling Services</div>
+          <p class="service-desc">Trauma-informed counseling that acknowledges the full weight of what survivors carry, provided by clinicians with professional and lived experience.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <div class="service-title">Community Engagement</div>
+          <p class="service-desc">Programs that bridge the institution to the community to build power and trust towards social change.</p>
+        </div>
+      </div>
+
+      <!-- Team -->
+      <div id="team" style="margin-top: 100px;">
+        <div class="section-label reveal"><span>Our Team</span></div>
+        <h3 class="team-h3 reveal">The people behind the work.</h3>
+
+        <div class="team-photo-grid">
+          <div class="team-member reveal">
+            <div class="team-photo-wrap">
+              <img src="Photos/VC-Profile-Pic.jpg" alt="Vincent Chong, MD, MS — Co-Director">
+            </div>
+            <div class="team-role-tag">Co-Director</div>
+            <div class="team-name">Vincent Chong</div>
+            <div class="team-credentials">MD, MS</div>
+          </div>
+
+          <div class="team-member reveal reveal-delay-1">
+            <div class="team-photo-wrap">
+              <img src="Photos/Jen-Reid-2023.jpg" alt="Jen Reid, MS, MS — Co-Director">
+            </div>
+            <div class="team-role-tag">Co-Director</div>
+            <div class="team-name">Jen Reid</div>
+            <div class="team-credentials">MD, MS</div>
+          </div>
+
+          <div class="team-member reveal reveal-delay-2">
+            <div class="team-photo-wrap">
+              <img src="Photos/Sumala.png" alt="Sumala Haque, MSW, MPH — Program Director">
+            </div>
+            <div class="team-role-tag">Program Director</div>
+            <div class="team-name">Sumala Haque</div>
+            <div class="team-credentials">MSW, MPH</div>
+          </div>
+
+          <div class="team-member reveal reveal-delay-3">
+            <div class="team-photo-wrap team-photo-placeholder">
+              <svg class="team-placeholder-icon" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="50" cy="38" r="24" fill="#0b1f3a"/>
+                <path d="M5 115 C5 78 95 78 95 115" fill="#0b1f3a"/>
+              </svg>
+            </div>
+            <div class="team-role-tag">Program Manager</div>
+            <div class="team-name">Arcelia Tavarez</div>
+          </div>
+
+          <div class="team-member reveal">
+            <div class="team-photo-wrap team-photo-placeholder">
+              <svg class="team-placeholder-icon" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="50" cy="38" r="24" fill="#0b1f3a"/>
+                <path d="M5 115 C5 78 95 78 95 115" fill="#0b1f3a"/>
+              </svg>
+            </div>
+            <div class="team-role-tag">Lead Case Manager</div>
+            <div class="team-name">Brianna Vargas</div>
+          </div>
+
+          <div class="team-member reveal reveal-delay-1">
+            <div class="team-photo-wrap team-photo-placeholder">
+              <svg class="team-placeholder-icon" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="50" cy="38" r="24" fill="#0b1f3a"/>
+                <path d="M5 115 C5 78 95 78 95 115" fill="#0b1f3a"/>
+              </svg>
+            </div>
+            <div class="team-role-tag">Case Manager</div>
+            <div class="team-name">Aeries Castros</div>
+          </div>
+
+          <div class="team-member reveal reveal-delay-2">
+            <div class="team-photo-wrap team-photo-placeholder">
+              <svg class="team-placeholder-icon" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="50" cy="38" r="24" fill="#0b1f3a"/>
+                <path d="M5 115 C5 78 95 78 95 115" fill="#0b1f3a"/>
+              </svg>
+            </div>
+            <div class="team-role-tag">Case Manager</div>
+            <div class="team-name">Robert Arline</div>
+          </div>
+
+          <div class="team-member reveal reveal-delay-3">
+            <div class="team-photo-wrap team-photo-placeholder">
+              <svg class="team-placeholder-icon" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="50" cy="38" r="24" fill="#0b1f3a"/>
+                <path d="M5 115 C5 78 95 78 95 115" fill="#0b1f3a"/>
+              </svg>
+            </div>
+            <div class="team-role-tag">Community Engagement Specialist</div>
+            <div class="team-name">Salvador Marquez</div>
+          </div>
+
+          <div class="team-member reveal">
+            <div class="team-photo-wrap team-photo-placeholder">
+              <svg class="team-placeholder-icon" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="50" cy="38" r="24" fill="#0b1f3a"/>
+                <path d="M5 115 C5 78 95 78 95 115" fill="#0b1f3a"/>
+              </svg>
+            </div>
+            <div class="team-role-tag">Research Resident</div>
+            <div class="team-name">Jane Kim</div>
+            <div class="team-credentials">MD</div>
+          </div>
+
+          <div class="team-member reveal reveal-delay-1">
+            <div class="team-photo-wrap team-photo-placeholder">
+              <svg class="team-placeholder-icon" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="50" cy="38" r="24" fill="#0b1f3a"/>
+                <path d="M5 115 C5 78 95 78 95 115" fill="#0b1f3a"/>
+              </svg>
+            </div>
+            <div class="team-role-tag">Research Resident</div>
+            <div class="team-name">David Rosenberg</div>
+            <div class="team-credentials">MD</div>
+          </div>
+
+          <div class="team-member reveal reveal-delay-2">
+            <div class="team-photo-wrap team-photo-placeholder">
+              <svg class="team-placeholder-icon" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="50" cy="38" r="24" fill="#0b1f3a"/>
+                <path d="M5 115 C5 78 95 78 95 115" fill="#0b1f3a"/>
+              </svg>
+            </div>
+            <div class="team-role-tag">Research Resident</div>
+            <div class="team-name">Ian Joseph</div>
+            <div class="team-credentials">MD</div>
+          </div>
+
+          <div class="team-member reveal reveal-delay-3">
+            <div class="team-photo-wrap team-photo-placeholder">
+              <svg class="team-placeholder-icon" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="50" cy="38" r="24" fill="#0b1f3a"/>
+                <path d="M5 115 C5 78 95 78 95 115" fill="#0b1f3a"/>
+              </svg>
+            </div>
+            <div class="team-role-tag">Medical Student Researcher</div>
+            <div class="team-name">Arianna Konstantopoulos</div>
+          </div>
+
+          <div class="team-member reveal">
+            <div class="team-photo-wrap team-photo-placeholder">
+              <svg class="team-placeholder-icon" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="50" cy="38" r="24" fill="#0b1f3a"/>
+                <path d="M5 115 C5 78 95 78 95 115" fill="#0b1f3a"/>
+              </svg>
+            </div>
+            <div class="team-role-tag">Medical Student Researcher</div>
+            <div class="team-name">Marilee Fisher</div>
+          </div>
+
+          <div class="team-member reveal reveal-delay-1">
+            <div class="team-photo-wrap team-photo-placeholder">
+              <svg class="team-placeholder-icon" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="50" cy="38" r="24" fill="#0b1f3a"/>
+                <path d="M5 115 C5 78 95 78 95 115" fill="#0b1f3a"/>
+              </svg>
+            </div>
+            <div class="team-role-tag">High School Researcher</div>
+            <div class="team-name">Pranav Kolli</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partners -->
+      <div class="partners reveal">
+        <div class="partners-eyebrow">Community Partners</div>
+        <div class="partners-row">
+          <img src="Logos/The_Lundquist_Institute.jpg" alt="Lundquist Institute for Biomedical Innovation" class="partner-logo">
+          <img src="Logos/Crossroads.png" alt="Southern California Crossroads" class="partner-logo">
+          <img src="Logos/Arise-and-Go.webp" alt="Arise &amp; Go" class="partner-logo">
+          <img src="Logos/Harbor-Trauma.png" alt="Harbor Trauma" class="partner-logo">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════ GALLERY ══════ -->
+  <section id="gallery">
+    <div class="gallery-inner">
+
+      <div class="gallery-header reveal">
+        <h2 class="gallery-h2">Our work in <em>the community.</em></h2>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carousel-prev" aria-label="Previous">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M11 4l-5 5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="carousel-btn" id="carousel-next" aria-label="Next">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="carousel-track-wrap reveal" id="carousel">
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-slide" data-caption="Our Team.">
+            <img src="Photo-Carousel/HVIP-Group-Picture.jpg" alt="Safe Harbor LA team and community members">
+          </div>
+          <div class="carousel-slide" data-caption="Rooted in Harbor-UCLA Medical Center.">
+            <img src="Photo-Carousel/Harbor-Picture.jpg" alt="Harbor-UCLA Medical Center">
+          </div>
+          <div class="carousel-slide" data-caption="Giffords Community Violence Intervention Conference, 2025">
+            <img src="Photo-Carousel/Safe-Harbor-1.jpg" alt="Safe Harbor LA program">
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-caption-area" id="carousel-caption-area">
+        <span class="carousel-caption-text" id="carousel-caption-text">Our Team.</span>
+      </div>
+
+      <div class="carousel-dots" id="carousel-dots">
+        <button class="carousel-dot active" aria-label="Slide 1"></button>
+        <button class="carousel-dot" aria-label="Slide 2"></button>
+        <button class="carousel-dot" aria-label="Slide 3"></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════ DONATE ══════ -->
+  <section id="donate">
+    <div class="donate-inner">
+
+      <div class="donate-left reveal">
+        <div class="section-label donate-section-label">
+          <span>Support Our Work</span>
+        </div>
+        <h2 class="donate-h2">
+          Help us build<br>a safer, more<br><em>healed</em> community.
+        </h2>
+        <p class="donate-body">
+          Safe Harbor LA runs on the generosity of people who believe in community-based healing. Your contribution directly supports the Safe Harbor team and the patients we serve.
+        </p>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div class="donate-panel">
+          <p class="donate-panel-copy">
+            Your support enables us to provide trauma-informed case management, counseling, and mentorship programs for survivors of violent injury — free of charge to every client we serve.
+          </p>
+          <a href="https://givebutter.com/safe-harbor-la-nti8rx" target="_blank" rel="noopener noreferrer" class="donate-btn">
+            Donate Now
+          </a>
+          <p class="donate-note">
+            Secure online donations powered by Givebutter.
+          </p>
+          <div class="donate-divider"></div>
+          <div class="contact-block-label">Reach Us Directly</div>
+          <a href="tel:+14243067710" class="contact-link">(424) 306-7710</a>
+          <a href="mailto:safeharborla@gmail.com" class="contact-link">safeharborla@gmail.com</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════ FOOTER ══════ -->
+  <footer>
+    <div class="footer-inner">
+
+      <div>
+        <div class="footer-brand">Safe Harbor LA</div>
+        <p class="footer-tagline">
+          Violence prevention and trauma recovery for<br>
+          victims of violent injury in Los Angeles.
+        </p>
+        <p class="footer-affil">
+          A program of Harbor-UCLA Medical Center<br>
+          and the Lundquist Institute for Biomedical Innovation.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-col-head">Navigate</div>
+        <ul class="footer-nav">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#donate">Donate</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-head">Contact</div>
+        <div class="footer-contact-line">Safe Harbor</div>
+        <div class="footer-contact-line">Division of Trauma</div>
+        <div class="footer-contact-line">Harbor-UCLA Medical Center</div>
+        <div class="footer-contact-line">1000 W. Carson St., Box 42</div>
+        <div class="footer-contact-line">Torrance, CA 90509</div>
+        <div style="margin-top: 16px;">
+          <a href="tel:+14243067710" class="footer-contact-link">(424) 306-7710</a>
+          <a href="mailto:safeharborla@gmail.com" class="footer-contact-link">safeharborla@gmail.com</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Safe Harbor LA. All rights reserved.</span>
+      <span>Harbor-UCLA Medical Center &middot; Torrance, CA</span>
+    </div>
+  </footer>
+
+  <script>
+    // Header: transparent → solid on scroll
+    const header = document.getElementById('header');
+    const onScroll = () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Hamburger menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    function closeMenu() {
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Open menu');
+      mobileNav.classList.remove('open');
+      mobileNav.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      mobileNav.setAttribute('aria-hidden', !isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close menu when a mobile nav link is clicked
+    mobileNav.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Scroll reveal with staggered siblings
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
+
+    revealEls.forEach(el => io.observe(el));
+
+    // Carousel
+    const track = document.getElementById('carousel-track');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const captionText = document.getElementById('carousel-caption-text');
+    const total = dots.length;
+    let current = 0;
+    let autoplay;
+
+    function goTo(index) {
+      current = (index + total) % total;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      captionText.textContent = slides[current].dataset.caption;
+    }
+
+    document.getElementById('carousel-prev').addEventListener('click', () => { goTo(current - 1); resetAutoplay(); });
+    document.getElementById('carousel-next').addEventListener('click', () => { goTo(current + 1); resetAutoplay(); });
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetAutoplay(); }));
+
+    function resetAutoplay() {
+      clearInterval(autoplay);
+      autoplay = setInterval(() => goTo(current + 1), 5000);
+    }
+
+    const carouselEl = document.getElementById('carousel');
+    carouselEl.addEventListener('mouseenter', () => clearInterval(autoplay));
+    carouselEl.addEventListener('mouseleave', resetAutoplay);
+
+    // Touch swipe support
+    let touchStartX = 0;
+    carouselEl.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    carouselEl.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) {
+        dx < 0 ? goTo(current + 1) : goTo(current - 1);
+        resetAutoplay();
+      }
+    }, { passive: true });
+
+    resetAutoplay();
+  </script>
+
+</body>
+</html>
